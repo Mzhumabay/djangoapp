@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Мой веб-проект</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Таблица 1</a></li>
+                <li><a href="#">Таблица 2</a></li>
+                <!-- Добавьте ссылки на другие таблицы из базы данных -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Список таблиц:</h2>
+        <ul class="table-list">
+            <li><a href="#">Таблица 1</a></li>
+            <li><a href="#">Таблица 2</a></li>
+            <!-- Добавьте ссылки на таблицы из базы данных -->
+        </ul>
+    </main>
+
+    <footer>
+        <p>Все права защищены &copy; 2023</p>
+    </footer>
+</body>
+</html>

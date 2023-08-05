@@ -1,36 +1,95 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <header>
-        <h1>Мой веб-проект</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">Таблица 1</a></li>
-                <li><a href="#">Таблица 2</a></li>
-                <!-- Добавьте ссылки на другие таблицы из базы данных -->
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <h2>Список таблиц:</h2>
-        <ul class="table-list">
-            <li><a href="#">Таблица 1</a></li>
-            <li><a href="#">Таблица 2</a></li>
-            <!-- Добавьте ссылки на таблицы из базы данных -->
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="{% static 'images/logo.png' %}" alt="Логотип" width="50" height="50" style="filter: brightness(150%);">
+        ERI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
         </ul>
-    </main>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<main class="mt-5">
+    <div class="container">
+        <section>
+            <h1>Содержание</h1>
+            <ul>
+                <li>Макроэкономика</li>
+                <ul>
+                    <li><a href="{% url 'subsection_detail' 'vvp' %}">Валовый внутренний продукт (ВВП)</a></li>
+                    <li><a href="{% url 'subsection_detail' 'ifo' %}">Индекс физического объема (ИФО)</a></li>
+                    <li><a href="{% url 'subsection_detail' 'prod_truda' %}">Производительность труда</a></li>
+                    <li><a href="{% url 'subsection_detail' 'invest_osn_kapital' %}">Инвестиции в основной капитал</a></li>
+                    <li><a href="{% url 'subsection_detail' 'zanyatost_bezrabotica' %}">Занятость, безработица, средняя зарплата по основным странам</a></li>
+                    <li><a href="{% url 'subsection_detail' 'potreb_ceni_proizv_ceni' %}">Индекс потребительских цен и индекс цен производителей</a></li>
+                    <li><a href="{% url 'subsection_detail' 'potreb_ceni_socialno_znac_tovary' %}">Индекс цен на социально-значимые потребительские товары</a></li>
+                    <li><a href="{% url 'subsection_detail' 'potreb_ceni_po_stranam' %}">Индекс потребительских цен по странам</a></li>
+                    <li><a href="{% url 'subsection_detail' 'mezhdunar_rezervy_kursy_valut' %}">Международные резервы и курсы валют</a></li>
+                    <li><a href="{% url 'subsection_detail' 'gosdolg_v_pp_k_vvp_po_stranam' %}">Госдолг в % к ВВП по странам</a></li>
+                    <li><a href="{% url 'subsection_detail' 'kreditny_reiting' %}">Кредитный рейтинг</a></li>
+                    <li><a href="{% url 'subsection_detail' 'ispolnenie_gos_bjudzheta_dohody' %}">Исполнение государственного бюджета (доходы)</a></li>
+                    <li><a href="{% url 'subsection_detail' 'ispolnenie_gos_bjudzheta_zatrati_deficit' %}">Исполнение государственного бюджета (затраты и дефицит)</a></li>
+                    <li><a href="{% url 'subsection_detail' 'index_pmi_sovokupnyy_po_stranam' %}">Индекс PMI (совокупный) по странам</a></li>
+                    <li><a href="{% url 'subsection_detail' 'index_pmi_promyshlennost_uslugi_po_stranam' %}">Индекс PMI (в промышленности и услугах) по странам</a></li>
+                    <li><a href="{% url 'subsection_detail' 'torgovy_oborot_kazahstan' %}">Торговый оборот Республики Казахстан</a></li>
+                    <li><a href="{% url 'subsection_detail' 'eksport_kazahstan_po_stranam' %}">Экспорт Республики Казахстан в разрезе стран</a></li>
+                    <li><a href="{% url 'subsection_detail' 'import_kazahstan_po_stranam' %}">Импорт Республики Казахстан в разрезе стран</a></li>
+                    <li><a href="{% url 'subsection_detail' 'osnovnye_eksportnye_tovary' %}">Основные экспортные товары</a></li>
+                    <li><a href="{% url 'subsection_detail' 'osnovnye_importnye_tovary' %}">Основные импортные товары</a></li>
+                    <li><a href="{% url 'subsection_detail' 'prognoz_socialno_ekonomich_razvitie' %}">Прогноз социально-экономического развития</a></li>
+                    <li><a href="{% url 'subsection_detail' 'prognoz_institut_ekonomicheskih_issledovanij' %}">Прогноз Института экономических исследований</a></li>
+                    <li><a href="{% url 'subsection_detail' 'konsensus_prognoz' %}">Консенсус прогноз</a></li>
+                </ul>
+                <li>Название следующей главы</li>
+                <ul>
+                    <li>Подраздел 1</li>
+                    <li>Подраздел 2</li>
+                    <!-- Rest of the list items under "Название следующей главы" -->
+                </ul>
+                <!-- Continue adding more chapters and subsections as needed -->
+            </ul>
+        </section>
+    </div>
+</main>
+
 
     <footer>
-        <p>Все права защищены &copy; 2023</p>
+        <p>© 2023 Макроэкономический Бюллетень</p>
     </footer>
-</body>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+{% endblock %}
 </html>

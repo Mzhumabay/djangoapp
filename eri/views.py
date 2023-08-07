@@ -24,6 +24,13 @@ def get_info_data():
         rows = cursor.fetchall()
     return rows
 
+def get_data():
+    with connection.cursor() as cursor:
+        cursor.execute("""SELECT 'сумма в тенге' AS region_name, SUM(CASE WHEN date_part('year', g.date) = 2019 THEN g.value ELSE 0 END) AS "2019", SUM(CASE WHEN date_part('year', g.date) = 2020 THEN g.value ELSE 0 END) AS "2020", SUM(CASE WHEN date_part('year', g.date) = 2021 THEN g.value ELSE 0 END) AS "2021", SUM(CASE WHEN date_part('year', g.date) = 2022 THEN g.value ELSE 0 END) AS "2022" FROM gdp_production_method g UNION SELECT 'сумма в длр' AS region_name, SUM(CASE WHEN date_part('year', g.date) = 2019 THEN g.value / 382 ELSE 0 END) AS "2019", SUM(CASE WHEN date_part('year', g.date) = 2020 THEN g.value / 420 ELSE 0 END) AS "2020", SUM(CASE WHEN date_part('year', g.date) = 2021 THEN g.value / 431 ELSE 0 END) AS "2021", SUM(CASE WHEN date_part('year', g.date) = 2022 THEN g.value / 456 ELSE 0 END) AS "2022" FROM gdp_production_method g UNION SELECT 'сумма ну душу населения' AS region_name, SUM(CASE WHEN date_part('year', g.date) = 2019 THEN (g.value / 18895567) / 382 ELSE 0 END) AS "2019", SUM(CASE WHEN date_part('year', g.date) = 2020 THEN (g.value / 19131779) / 420 ELSE 0 END) AS "2020", SUM(CASE WHEN date_part('year', g.date) = 2021 THEN (g.value / 19479552) / 431 ELSE 0 END) AS "2021", SUM(CASE WHEN date_part('year', g.date) = 2022 THEN (g.value / 19703159) / 456 ELSE 0 END) AS "2022" FROM gdp_production_method g;""")
+        rows = cursor.fetchall()
+        list_list = [list(tpl) for tpl in rows]
+    return list_list
+
 def index(request):   
     return render(request, 'index.html')
 
@@ -38,6 +45,7 @@ def table_view(request):
     }
 
     return render(request, 'table_view.html', context)
+
 
 
 def download_docx(request):
@@ -90,8 +98,8 @@ def subsection_detail(request, subsection_id):
         # Добавьте другие подразделы и их содержание здесь
     }
     
-    content = subsections.get(subsection_id, None)
-    
+    #content = subsections.get(subsection_id, None)
+    content  = get_data()
     if content is None:
         return render(request, 'not_found.html', {'subsection_id': subsection_id})
 

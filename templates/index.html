@@ -6,9 +6,10 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
+
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="#">
-        <img src="{% static 'images/logo.png' %}" alt="Логотип" width="50" height="50" style="filter: brightness(150%);">
+        <img src="{% static 'images/logo.png' %}" alt="Логотип" width="55" height="55" style="filter: brightness(150%);">
         ERI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,53 +44,112 @@
     </div>
 </nav>
 
-<main class="mt-5">
+<main class="mt-5 pt-5">
     <div class="container">
         <section>
             <h1>Содержание</h1>
-            <ul>
-                <li>Макроэкономика</li>
-                <ul>
-                    <li><a href="{% url 'subsection_detail' 'vvp' %}">Валовый внутренний продукт (ВВП)</a></li>
-                    <li><a href="{% url 'subsection_detail' 'ifo' %}">Индекс физического объема (ИФО)</a></li>
-                    <li><a href="{% url 'subsection_detail' 'prod_truda' %}">Производительность труда</a></li>
-                    <li><a href="{% url 'subsection_detail' 'invest_osn_kapital' %}">Инвестиции в основной капитал</a></li>
-                    <li><a href="{% url 'subsection_detail' 'zanyatost_bezrabotica' %}">Занятость, безработица, средняя зарплата по основным странам</a></li>
-                    <li><a href="{% url 'subsection_detail' 'potreb_ceni_proizv_ceni' %}">Индекс потребительских цен и индекс цен производителей</a></li>
-                    <li><a href="{% url 'subsection_detail' 'potreb_ceni_socialno_znac_tovary' %}">Индекс цен на социально-значимые потребительские товары</a></li>
-                    <li><a href="{% url 'subsection_detail' 'potreb_ceni_po_stranam' %}">Индекс потребительских цен по странам</a></li>
-                    <li><a href="{% url 'subsection_detail' 'mezhdunar_rezervy_kursy_valut' %}">Международные резервы и курсы валют</a></li>
-                    <li><a href="{% url 'subsection_detail' 'gosdolg_v_pp_k_vvp_po_stranam' %}">Госдолг в % к ВВП по странам</a></li>
-                    <li><a href="{% url 'subsection_detail' 'kreditny_reiting' %}">Кредитный рейтинг</a></li>
-                    <li><a href="{% url 'subsection_detail' 'ispolnenie_gos_bjudzheta_dohody' %}">Исполнение государственного бюджета (доходы)</a></li>
-                    <li><a href="{% url 'subsection_detail' 'ispolnenie_gos_bjudzheta_zatrati_deficit' %}">Исполнение государственного бюджета (затраты и дефицит)</a></li>
-                    <li><a href="{% url 'subsection_detail' 'index_pmi_sovokupnyy_po_stranam' %}">Индекс PMI (совокупный) по странам</a></li>
-                    <li><a href="{% url 'subsection_detail' 'index_pmi_promyshlennost_uslugi_po_stranam' %}">Индекс PMI (в промышленности и услугах) по странам</a></li>
-                    <li><a href="{% url 'subsection_detail' 'torgovy_oborot_kazahstan' %}">Торговый оборот Республики Казахстан</a></li>
-                    <li><a href="{% url 'subsection_detail' 'eksport_kazahstan_po_stranam' %}">Экспорт Республики Казахстан в разрезе стран</a></li>
-                    <li><a href="{% url 'subsection_detail' 'import_kazahstan_po_stranam' %}">Импорт Республики Казахстан в разрезе стран</a></li>
-                    <li><a href="{% url 'subsection_detail' 'osnovnye_eksportnye_tovary' %}">Основные экспортные товары</a></li>
-                    <li><a href="{% url 'subsection_detail' 'osnovnye_importnye_tovary' %}">Основные импортные товары</a></li>
-                    <li><a href="{% url 'subsection_detail' 'prognoz_socialno_ekonomich_razvitie' %}">Прогноз социально-экономического развития</a></li>
-                    <li><a href="{% url 'subsection_detail' 'prognoz_institut_ekonomicheskih_issledovanij' %}">Прогноз Института экономических исследований</a></li>
-                    <li><a href="{% url 'subsection_detail' 'konsensus_prognoz' %}">Консенсус прогноз</a></li>
-                </ul>
-                <li>Название следующей главы</li>
-                <ul>
-                    <li>Подраздел 1</li>
-                    <li>Подраздел 2</li>
-                    <!-- Rest of the list items under "Название следующей главы" -->
-                </ul>
-                <!-- Continue adding more chapters and subsections as needed -->
-            </ul>
+            <div class="content-container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list-unstyled main-menu">
+                            <li>
+                                <h2>Макроэкономика</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="{% url 'subsection_detail' 'vvp' %}" class="btn btn-primary btn-block btn-hover-effect">Валовый внутренний продукт (ВВП)</a></li>
+                                    <li><a href="{% url 'subsection_detail' 'ifo' %}" class="btn btn-primary btn-block btn-hover-effect">Индекс физического объема (ИФО)</a></li>
+                                    <!-- Add more links using the same format -->
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'prod_truda' %}" class="btn btn-primary btn-block btn-hover-effect">Производительность труда</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'invest_osn_kapital' %}" class="btn btn-primary btn-block btn-hover-effect">Инвестиции в основной капитал</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'zanyatost_bezrabotica' %}" class="btn btn-primary btn-block btn-hover-effect">Занятость, безработица, средняя зарплата по основным странам</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'potreb_ceni_proizv_ceni' %}" class="btn btn-primary btn-block btn-hover-effect">Индекс потребительских цен и индекс цен производителей</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'potreb_ceni_socialno_znac_tovary' %}" class="btn btn-primary btn-block btn-hover-effect">Индекс цен на социально-значимые потребительские товары</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'potreb_ceni_po_stranam' %}" class="btn btn-primary btn-block btn-hover-effect">Индекс потребительских цен по странам</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'mezhdunar_rezervy_kursy_valut' %}" class="btn btn-primary btn-block btn-hover-effect">Международные резервы и курсы валют</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'gosdolg_v_pp_k_vvp_po_stranam' %}" class="btn btn-primary btn-block btn-hover-effect">Госдолг в % к ВВП по странам</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'kreditny_reiting' %}" class="btn btn-primary btn-block btn-hover-effect">Кредитный рейтинг</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'ispolnenie_gos_bjudzheta_dohody' %}" class="btn btn-primary btn-block btn-hover-effect">Исполнение государственного бюджета (доходы)</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'ispolnenie_gos_bjudzheta_zatrati_deficit' %}" class="btn btn-primary btn-block btn-hover-effect">Исполнение государственного бюджета (затраты и дефицит)</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'index_pmi_sovokupnyy_po_stranam' %}" class="btn btn-primary btn-block btn-hover-effect">Индекс PMI (совокупный) по странам</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'index_pmi_promyshlennost_uslugi_po_stranam' %}" class="btn btn-primary btn-block btn-hover-effect">Индекс PMI (в промышленности и услугах) по странам</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'torgovy_oborot_kazahstan' %}" class="btn btn-primary btn-block btn-hover-effect">Торговый оборот Республики Казахстан</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'eksport_kazahstan_po_stranam' %}" class="btn btn-primary btn-block btn-hover-effect">Экспорт Республики Казахстан в разрезе стран</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'import_kazahstan_po_stranam' %}" class="btn btn-primary btn-block btn-hover-effect">Импорт Республики Казахстан в разрезе стран</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'osnovnye_eksportnye_tovary' %}" class="btn btn-primary btn-block btn-hover-effect">Основные экспортные товары</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'osnovnye_importnye_tovary' %}" class="btn btn-primary btn-block btn-hover-effect">Основные импортные товары</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'prognoz_socialno_ekonomich_razvitie' %}" class="btn btn-primary btn-block btn-hover-effect">Прогноз социально-экономического развития</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'prognoz_institut_ekonomicheskih_issledovanij' %}" class="btn btn-primary btn-block btn-hover-effect">Прогноз Института экономических исследований</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'konsensus_prognoz' %}" class="btn btn-primary btn-block btn-hover-effect">Консенсус прогноз</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h2>Название следующей главы</h2>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'podrazdel_1' %}" class="btn btn-secondary btn-block btn-hover-effect">Подраздел 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'subsection_detail' 'podrazdel_2' %}" class="btn btn-secondary btn-block btn-hover-effect">Подраздел 2</a>
+                                    </li>
+                                    <!-- Add more links using the same format -->
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 </main>
 
 
-    <footer>
-        <p>© 2023 Макроэкономический Бюллетень</p>
-    </footer>
+
+<footer>
+    <img src="{% static 'images/foot.png' %}" alt="Фото в подвале" style="width: 100%; height: auto;">
+    <p>© 2023 Макроэкономический Бюллетень</p>
+</footer>
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 {% endblock %}
 </html>

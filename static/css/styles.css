@@ -1,3 +1,36 @@
-.container {
-    margin-top: 120px; /* Значение может быть изменено в зависимости от вашего дизайна */
+.bg-custom {
+    background-color: #2c3e50; /* Replace with your desired dark blue color */
+}
+.btn-primary {
+    background-color: #3a4858; /* Dark blue color */
+    border-color:  #3a4858;
+}
+
+/* Change the hover effect color if needed */
+.btn-primary:hover {
+    background-color: #28313a; /* Slightly darker blue for hover effect */
+    border-color: #28313a;
+}
+
+.btn-hover-effect:hover {
+    opacity: 1;
+}
+
+footer {
+    background-image: url('{% static "images/foot.png" %}');
+    background-size: cover;
+    background-position: center center;
+    color: white;
+}
+
+
+/* CSS styles for the vertical list */
+.main-menu {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.main-menu h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
 }

@@ -8,26 +8,29 @@ from openpyxl import load_workbook
 from io import BytesIO
 import os
 
+
 def get_publications_data():
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM gdp_regions")
         rows = cursor.fetchall()
     return rows
 
+
 def get_data(id):
-    
+
     with connection.cursor() as cursor:
         cursor.execute(id)
         rows = cursor.fetchall()
         list_list = [list(tpl) for tpl in rows]
     return list_list
 
-def index(request):   
+
+def index(request):
     return render(request, 'index.html')
+
 
 def table_view(request):
     publications_data = get_publications_data()
- 
 
     # Передаем данные в шаблон для отображения
     context = {
@@ -36,12 +39,13 @@ def table_view(request):
 
     return render(request, 'table_view.html', context)
 
+
 def excel_to_doc(request):
     # Загружаем Excel-файл с данными
     excel_file_path = 'static/doc/test_table.xlsx'
     wb = load_workbook(excel_file_path)
     ws = wb.active
-
+# dawdada
 # Создаем список списков для хранения данных
     data_list = []
 
@@ -50,7 +54,8 @@ def excel_to_doc(request):
         row_data = [cell.value for cell in row]
         data_list.append(row_data)
 
-    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
     response['Content-Disposition'] = 'attachment; filename="table_data.docx"'
 
     doc = Document()
@@ -58,24 +63,31 @@ def excel_to_doc(request):
     # Ваш код для создания DOCX документа с данными из таблиц
     doc.add_heading('Таблица публикаций:', level=2)
     for publication in data_list:
-        doc.add_paragraph(f"ID: {publication[0]}, Название: {publication[1]}, Название: {publication[2]}, Название: {publication[3]}"  )
-
+        doc.add_paragraph(
+            f"ID: {publication[0]}, Название: {publication[1]}, Название: {publication[2]}, Название: {publication[3]}")
 
     doc.save(response)
     return response
+
+
 def download_excel(request):
     excel_file_path = 'static/doc/test_table.xlsx'  # Путь к вашему Excel файлу
     if os.path.exists(excel_file_path):
         with open(excel_file_path, 'rb') as excel_file:
-            response = HttpResponse(excel_file.read(), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-            response['Content-Disposition'] = f'attachment; filename={os.path.basename(excel_file_path)}'
+            response = HttpResponse(excel_file.read(
+            ), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            response[
+                'Content-Disposition'] = f'attachment; filename={os.path.basename(excel_file_path)}'
             return response
     else:
         # Обработка случая, если файл не найден
         return HttpResponse('Excel файл не найден', status=404)
+
+
 def download_docx(request):
     publications_data = get_publications_data()
-    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
     response['Content-Disposition'] = 'attachment; filename="table_data.docx"'
 
     doc = Document()
@@ -85,9 +97,9 @@ def download_docx(request):
     for publication in publications_data:
         doc.add_paragraph(f"ID: {publication[0]}, Название: {publication[1]}")
 
-
     doc.save(response)
     return response
+
 
 def subsection_detail(request, subsection_id):
     excel_file_path = 'static/doc/test_table.xlsx'
@@ -100,10 +112,10 @@ def subsection_detail(request, subsection_id):
 
     return render(request, 'excel_to_html.html', {'html_table': html_table})
 #     # Получите содержание для подраздела на основе subsection_id
-#     # Для примера предположим, что у нас есть словарь с содержанием    
-    
+#     # Для примера предположим, что у нас есть словарь с содержанием
+
 #     #content = subsections.get(subsection_id, None)
- 
+
 
 # # Получение записи и работы со словарем сырых запросов
 #     raw_query_dict = RawQueryDictionary.objects.get(id=1)

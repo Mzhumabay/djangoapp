@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import json
+
+with open(os.path.expanduser("~/Desktop/config/config.json")) as f:
+    config = json.load(f)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -77,11 +82,12 @@ WSGI_APPLICATION = "djangoapp.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "statistics3",
-        "USER": "postgres",
-        "PASSWORD": "daniyarfgh",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config['database']['NAME'],
+        'USER': config['database']['USER'],
+        'PASSWORD': config['database']['PASSWORD'],
+        # ...
     }
 }
 

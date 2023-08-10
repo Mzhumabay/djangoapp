@@ -45,7 +45,6 @@ def excel_to_doc(request):
     excel_file_path = 'static/doc/test_table.xlsx'
     wb = load_workbook(excel_file_path)
     ws = wb.active
-# dawdada
 # Создаем список списков для хранения данных
     data_list = []
 

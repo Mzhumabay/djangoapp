@@ -1,8 +1,6 @@
+{% extends 'base.html' %}
 
-
-{% block title %} Таблица из Excel {% endblock %}
-
-<style>
+    <style>
     /* Стили для таблицы */
     table {
         border-collapse: collapse;
@@ -10,7 +8,8 @@
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
 
-    th, td {
+    th,
+    td {
         border: 1px solid #dddddd;
         padding: 12px;
         text-align: left;
@@ -26,34 +25,36 @@
         background-color: #f9f9f9;
     }
     .download-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-}
+        display: inline-block;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+    }
 
-.excel-btn {
-    background-color: #4CAF50;
-    color: white;
-}
+    .excel-btn {
+        background-color: #4caf50;
+        color: white;
+    }
 
-.docx-btn {
-    background-color: #007BFF;
-    color: white;
-}
-
-</style>
-
+    .docx-btn {
+        background-color: #007bff;
+        color: white;
+    }
+    </style>
 {% block content %}
-    <h1>Таблица из Excel</h1>
-    <!-- Вставляем HTML-код таблицы из переменной html_table -->
-    {{ html_table|safe }}
+<h1>Таблица из Excel</h1>
+<!-- Вставляем HTML-код таблицы из переменной html_table -->
+{{ html_table|safe }}
 
-    <a href="{% url 'download_excel' %}" class="download-btn excel-btn" download>Скачать Excel файл</a>
-    <a href="{% url 'download_docx' %}" class="download-btn docx-btn" download>Скачать DOCX файл</a>
-   
+<a href="{% url 'download_excel' %}" class="download-btn excel-btn" download
+  >Скачать Excel файл</a
+>
+<a href="{% url 'download_docx' %}" class="download-btn docx-btn" download
+  >Скачать DOCX файл</a
+>
+
 {% endblock %}

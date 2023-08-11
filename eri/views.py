@@ -26,7 +26,36 @@ def get_data(id):
 
 
 def index(request):
-    return render(request, 'index.html')
+    links = [
+    {"subsection_id": "vvp", "display_text": "Валовый внутренний продукт (ВВП)"},
+    {"subsection_id": "ifo", "display_text": "Индекс физического объема (ИФО)"},
+    {"subsection_id": "prod_truda", "display_text": "Производительность труда"},
+    {"subsection_id": "invest_osn_kapital", "display_text": "Инвестиции в основной капитал"},
+    {"subsection_id": "zanyatost_bezrabotica", "display_text": "Занятость, безработица, средняя зарплата по основным странам"},
+    {"subsection_id": "potreb_ceni_proizv_ceni", "display_text": "Индекс потребительских цен и индекс цен производителей"},
+    {"subsection_id": "potreb_ceni_socialno_znac_tovary", "display_text": "Индекс цен на социально-значимые потребительские товары"},
+    {"subsection_id": "potreb_ceni_po_stranam", "display_text": "Индекс потребительских цен по странам"},
+    {"subsection_id": "mezhdunar_rezervy_kursy_valut", "display_text": "Международные резервы и курсы валют"},
+    {"subsection_id": "gosdolg_v_pp_k_vvp_po_stranam", "display_text": "Госдолг в % к ВВП по странам"},
+    {"subsection_id": "kreditny_reiting", "display_text": "Кредитный рейтинг"},
+    {"subsection_id": "ispolnenie_gos_bjudzheta_dohody", "display_text": "Исполнение государственного бюджета (доходы)"},
+    {"subsection_id": "ispolnenie_gos_bjudzheta_zatrati_deficit", "display_text": "Исполнение государственного бюджета (затраты и дефицит)"},
+    {"subsection_id": "index_pmi_sovokupnyy_po_stranam", "display_text": "Индекс PMI (совокупный) по странам"},
+    {"subsection_id": "index_pmi_promyshlennost_uslugi_po_stranam", "display_text": "Индекс PMI (в промышленности и услугах) по странам"},
+    {"subsection_id": "torgovy_oborot_kazahstan", "display_text": "Торговый оборот Республики Казахстан"},
+    {"subsection_id": "eksport_kazahstan_po_stranam", "display_text": "Экспорт Республики Казахстан в разрезе стран"},
+    {"subsection_id": "import_kazahstan_po_stranam", "display_text": "Импорт Республики Казахстан в разрезе стран"},
+    {"subsection_id": "osnovnye_eksportnye_tovary", "display_text": "Основные экспортные товары"},
+    {"subsection_id": "osnovnye_importnye_tovary", "display_text": "Основные импортные товары"},
+    {"subsection_id": "prognoz_socialno_ekonomich_razvitie", "display_text": "Прогноз социально-экономического развития"},
+    {"subsection_id": "prognoz_institut_ekonomicheskih_issledovanij", "display_text": "Прогноз Института экономических исследований"},
+    {"subsection_id": "konsensus_prognoz", "display_text": "Консенсус прогноз"},
+    ]
+    context = {
+        'links': links,
+    }
+    #print(links)
+    return render(request, 'index.html', context)
 
 
 def table_view(request):
@@ -110,25 +139,3 @@ def subsection_detail(request, subsection_id):
     html_table = df.to_html(index=False, classes='table table-bordered')
 
     return render(request, 'excel_to_html.html', {'html_table': html_table})
-#     # Получите содержание для подраздела на основе subsection_id
-#     # Для примера предположим, что у нас есть словарь с содержанием
-
-#     #content = subsections.get(subsection_id, None)
-
-
-# # Получение записи и работы со словарем сырых запросов
-#     raw_query_dict = RawQueryDictionary.objects.get(id=1)
-#     raw_queries = raw_query_dict.raw_queries
-
-# # Извлечение сырого запроса по ключу
-#     query_id_1 = raw_queries.get("prod_truda")
-#     #query_id_2 = raw_queries.get("query_id_2")
-
-# # Обновление сырого запроса
-#    # raw_queries["query_id_1"] = "UPDATE your_table SET column = value WHERE condition"
-#     #raw_query_dict.save()
-#     content  = get_data(query_id_1)
-#     if content is None:
-#         return render(request, 'not_found.html', {'subsection_id': subsection_id})
-
-#     return render(request, 'subsection_detail.html', {'content': content, 'subsection_id': subsection_id})

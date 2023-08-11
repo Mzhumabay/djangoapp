@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
-<head>
+  {% load static %}
+  <head>
     <title>{% block title %}{% endblock %}</title>
     <!-- CSS only -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-   
-    </head>
-<body>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/styles.css' %}"
+    />
+  </head>
+  <body>
     <nav class="navbar">
-        <div class="container">
-             <div class="nav_inner">
-                 <div class="nav_logo">
-                    <a href="{% url 'index'  %}">
-                        <div class="nav_logo_img"> 
-                            <img src="{% static 'images/logo.png' %}" alt="Фото в подвале" style="width: 100%; height: auto;">
-                        </div>
-                    </a>
-
-                 </div>
-                 {% comment %} <div class="nav_links">
-                    <a>Home</a>
-                 </div> {% endcomment %}
-                 <div class="nav_download">
-                    <a href="{% static 'doc/full_doc.docx' %}">Скачать файл</a>
-                 </div>
-             </div>
+      <div class="container">
+        <div class="nav_inner">
+          <div class="nav_logo">
+            <a href="{% url 'index'  %}">
+              <div class="nav_logo_img">
+                <img
+                  src="{% static 'images/logo.png' %}"
+                  alt="Фото в подвале"
+                  style="width: 100%; height: auto"
+                />
+              </div>
+            </a>
+          </div>
+          {% comment %}
+          <div class="nav_links">
+            <a>Home</a>
+          </div>
+          {% endcomment %}
+          <div class="nav_download">
+            <a href="{% static 'doc/full_doc.docx' %}">Скачать файл</a>
+          </div>
         </div>
- </nav>
-    {% block content %}
-    {% endblock %}
-</body>
-
-</html
+      </div>
+    </nav>
+    {% block content %} {% endblock %}
+  </body>
+</html>

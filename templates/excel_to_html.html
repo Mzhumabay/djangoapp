@@ -50,6 +50,10 @@
 <!-- Вставляем HTML-код таблицы из переменной html_table -->
 {{ html_table|safe }}
 
+
+{% for data in context %}
+    {{data.display_text}}
+{% endfor %}
 <a href="{% url 'download_excel' %}" class="download-btn excel-btn" download
   >Скачать Excel файл</a
 >

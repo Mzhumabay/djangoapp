@@ -17,6 +17,9 @@ img {
   width: 100%;
   user-select: none;
 }
+ul{
+    padding: 0px;
+}
 /*NAVBAR*/
 .navbar {
   background: #343a40;
@@ -52,3 +55,48 @@ img {
   color: #525f6c;
 }
 /*NAVBAR*/
+
+
+/*Table Index*/
+.main-menu{
+    list-style-type:none
+}
+.main-menu li{
+    list-style-type:none;
+
+}
+.list-unstyled{
+    max-width: 600px;
+    margin:  0 auto;
+}
+.list-unstyled li{
+    margin-bottom: 20px;
+}
+.list-unstyled a{
+    text-align: center;
+    display: block;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #343a40;
+    border:1px solid #343a40 ;
+
+    color: #fff;
+    width: 100%;
+    text-decoration: none;
+    transition: 0.2s;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list-unstyled a:hover{
+    background: #fff;
+    border:1px solid #343a40 ;
+    color: #343a40;
+}
+.main-menu h2{
+    text-align: center;
+    
+}
+
+/*Table Index*/

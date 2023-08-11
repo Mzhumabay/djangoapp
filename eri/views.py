@@ -130,7 +130,16 @@ def download_docx(request):
 
 
 def subsection_detail(request, subsection_id):
-    excel_file_path = 'static/doc/test_table.xlsx'
+    if subsection_id == 'vvp':
+        excel_file_path = 'static/doc/gdp_exel.xlsx'
+    elif subsection_id == 'prod_truda':
+        excel_file_path = 'static/doc/labor_productivity_exel.xlsx'
+    elif subsection_id == 'potreb_ceni_socialno_znac_tovary':
+        excel_file_path = 'static/doc/soc_imp_exel.xlsx'
+    else:
+        return render(request, 'not_found.html')
+    
+
 
     # Прочитать данные из Excel файла
     df = pd.read_excel(excel_file_path)

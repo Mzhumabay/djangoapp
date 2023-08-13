@@ -132,19 +132,26 @@ def download_docx(request):
 def subsection_detail(request, subsection_id):
     if subsection_id == 'vvp':
         excel_file_path = 'static/doc/gdp_exel.xlsx'
+        name_id = 'Валовый внутренний продукт (ВВП)'
+    elif subsection_id == 'ifo':
+        excel_file_path = 'static/doc/volume_index_industrial_exel.xlsx'
+        name_id = 'Индекс физического объема (ИФО)'
     elif subsection_id == 'prod_truda':
         excel_file_path = 'static/doc/labor_productivity_exel.xlsx'
+        name_id = 'Производительность труда '
     elif subsection_id == 'potreb_ceni_socialno_znac_tovary':
         excel_file_path = 'static/doc/soc_imp_exel.xlsx'
+        name_id = 'Индекс цен на социально-значимые потребительские товары'
     else:
         return render(request, 'not_found.html')
     
-
-
-    # Прочитать данные из Excel файла
+   # Прочитать данные из Excel файла
     df = pd.read_excel(excel_file_path)
 
     # Преобразовать DataFrame в HTML-таблицу
     html_table = df.to_html(index=False, classes='table table-bordered')
-
-    return render(request, 'excel_to_html.html', {'html_table': html_table})
+    context = {
+        'html_table': html_table, 
+        'name_id' : name_id
+    }
+    return render(request, 'excel_to_html.html', {'html_table': html_table, 'name_id': name_id})
